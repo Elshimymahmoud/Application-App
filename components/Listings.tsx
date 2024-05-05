@@ -17,16 +17,16 @@ type Props = {
   listings: any[];
   category: string;
 };
-
+// hghgh
 const Listings = ({ listings, category }: Props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log('Update Listing');
+    console.log("Update Listing");
     setLoading(true);
 
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
     }, 200);
   }, [category]);
 

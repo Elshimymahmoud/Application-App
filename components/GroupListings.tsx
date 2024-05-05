@@ -18,7 +18,7 @@ const GroupListings = ({ listings }: { listings: GroupType[] }) => {
         <Image source={{ uri: item.image }} style={styles.image} />
         <View>
           <Text style={styles.itemTxt}>{item.name}</Text>
-          <View style={{flexDirection:'row',alignItems:'center'}}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Ionicons name="star" size={20} color={Colors.primaryColor} />
             <Text style={styles.itemRating}>{item.rating}</Text>
             <Text style={styles.itemReviews}>({item.reviews})</Text>
@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
   },
   itemRating: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     color: Colors.black,
     marginLeft: 5,
   },
   itemReviews: {
     fontSize: 14,
-    color: '#999'
-  }
+    color: "#999",
+  },
 });

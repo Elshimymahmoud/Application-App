@@ -20,7 +20,6 @@ import groupData from "@/data/groups.json";
 import { Entypo } from "@expo/vector-icons";
 import { Link } from "expo-router";
 
-
 const Page = () => {
   const headerHeight = useHeaderHeight();
   const [category, setCategory] = useState("All");
@@ -45,7 +44,6 @@ const Page = () => {
                   color={Colors.black}
                   style={{ width: 40, height: 40, borderRadius: 10 }}
                 />
-                
               </TouchableOpacity>
             </Link>
           ),
@@ -93,7 +91,6 @@ const Page = () => {
 
           <GroupListings listings={groupData} />
         </ScrollView>
-        
       </View>
     </>
   );
