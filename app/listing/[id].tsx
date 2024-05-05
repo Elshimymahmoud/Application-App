@@ -17,7 +17,7 @@ import {
   FontAwesome5,
   Ionicons,
 } from "@expo/vector-icons";
-import Colors from "@/constants/Colors";
+import Colors from "@/constans/color";
 import Animated, {
   SlideInDown,
   interpolate,
