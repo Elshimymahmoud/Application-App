@@ -3,9 +3,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Image,
-  Pressable,
-  TextInput,
   ScrollView,
 } from "react-native";
 import React from "react";
@@ -13,9 +10,8 @@ import { Link, Stack } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import color from "@/constans/color";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@react-navigation/elements";
-import { AntDesign } from "@expo/vector-icons";
 import CatogreyBtn from "@/component/CatogreyBtn";
 import Listings from "./Listings";
 import listingData from "@/data/destinations.json";
@@ -26,8 +22,6 @@ import Search from "@/component/Search";
 export default function Home() {
   const headerHight = useHeaderHeight();
   const [category, setCategory] = useState("All");
-
-  const [searchInput, setSearchInput] = useState("");
 
   const onCatChanged = (category: string) => {
     console.log("Categpry: ", category);
