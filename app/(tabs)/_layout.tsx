@@ -3,7 +3,7 @@ import React from "react";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import color from "../../constans/color";
+import color from "../../constant/color";
 
 export default function _layout() {
   return (

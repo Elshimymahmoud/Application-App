@@ -9,7 +9,7 @@ import React from "react";
 import { Link, Stack } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import color from "@/constans/color";
+import color from "@/constant/color";
 import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@react-navigation/elements";
 import CatogreyBtn from "@/component/CatogreyBtn";

@@ -1,4 +1,3 @@
-
 import {
   FlatList,
   Image,
@@ -10,7 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ListingType } from "@/types/listingType";
-import Colors from "@/constans/color";
+import Colors from "@/constant/color";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import { GroupType } from "@/types/groupType";
@@ -24,24 +23,23 @@ const Listings = ({ listings, category }: Props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log('Update Listing');
+    console.log("Update Listing");
     setLoading(true);
 
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
     }, 200);
   }, [category]);
 
-  const renderItems: ListRenderItem<ListingType> = ({ item}) => {
+  const renderItems: ListRenderItem<ListingType> = ({ item }) => {
     return (
       <Link href={`/listing/${item.id}`} asChild>
         <TouchableOpacity>
           <View style={styles.item}>
             <Image source={{ uri: item.image }} style={styles.image} />
-           {/*   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrating */}
+            {/*   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrating */}
 
-
-           {/* <View style={styles.ratingRow}>
+            {/* <View style={styles.ratingRow}>
             <View style={styles.rating}>
                 {[1,2,3,4,5].map((index)=>(
                     <Ionicons
@@ -56,8 +54,6 @@ const Listings = ({ listings, category }: Props) => {
              
             </View>
 </View> */}
-
-
 
             <Text style={styles.itemTxt} numberOfLines={1} ellipsizeMode="tail">
               {item.name}
@@ -109,7 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 30,
   },
- 
+
   itemTxt: {
     fontSize: 16,
     fontWeight: "600",
@@ -125,34 +121,26 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: Colors.primaryColor,
   },
-  ratingRow:{
-     position: "absolute",
+  ratingRow: {
+    position: "absolute",
     top: 250,
     right: 30,
-    backgroundColor: 'white',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
+    backgroundColor: "white",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 6,
     borderRadius: 30,
     borderWidth: 2,
     borderColor: Colors.white,
   },
-  rating:{
-flexDirection:'row',
-justifyContent:'flex-start',
-alignItems:'center',
-
-
-
-
-
-
-
+  rating: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
-  ratingText:{
-
-    color:'gray',
-    fontFamily:'medium'
-  }
+  ratingText: {
+    color: "gray",
+    fontFamily: "medium",
+  },
 });
