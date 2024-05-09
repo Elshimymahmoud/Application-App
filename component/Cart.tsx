@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { View, Text, Button } from "react-native";
 import destinationsData from "@/data/destinations.json";
+import AddToCartButton from "./CartButton";
 
 interface Destination {
   id: string;
   name: string;
   image: string;
   description: string;
-  rating: string;
+  rating: number;
   price: string;
   duration: string;
   location: string;
+  qnty?: number;
   category: string;
 }
 
@@ -26,12 +28,12 @@ const Cart = () => {
       setCartItems(
         cartItems.map((cartItem) =>
           cartItem.id === product.id
-            ? { ...cartItem, quantity: (cartItem. || 1) + 1 }
+            ? { ...cartItem, qnty: (cartItem.qnty || 1) + 1 }
             : cartItem
         )
       );
     } else {
-      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+      setCartItems([...cartItems, { ...product, qnty: 1 }]);
     }
   };
 
@@ -41,13 +43,17 @@ const Cart = () => {
       {destinationsData.map((product: Destination) => (
         <View key={product.id}>
           <Text>{product.name}</Text>
-          <Button title="Add to Cart" onPress={() => addToCart(product)} />
+          <AddToCartButton
+            item={product}
+            cart={cartItems}
+            setCart={setCartItems}
+          />
         </View>
       ))}
-      {cartItems.map((cartItem) => (
+      {cartItems.map((cartItem: Destination) => (
         <View key={cartItem.id}>
           <Text>
-            {cartItem.name} ({cartItem.quantity})
+            {cartItem.name} ({cartItem.qnty})
           </Text>
         </View>
       ))}
