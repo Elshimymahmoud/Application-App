@@ -31,7 +31,7 @@ const AddToCartButton: React.FC<Props> = ({ item, cart, setCart }) => {
   return (
     <TouchableOpacity onPress={handleAddToCart}>
       <View>
-        <Text>Add to Cart</Text>
+        <Text>Add to hhhhhhhhhhhhhhhhhhhhhh Cart</Text>
       </View>
     </TouchableOpacity>
   );
