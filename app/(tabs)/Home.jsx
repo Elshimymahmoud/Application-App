@@ -14,34 +14,53 @@ import { useState, useEffect } from "react";
 import { useHeaderHeight } from "@react-navigation/elements";
 import CatogreyBtn from "@/component/CatogreyBtn";
 import Listings from "./Listings";
-import listingData from "@/data/destinations.json";
+import { getProducts } from "@/Firebase/addTofirebase";
 import GroupListings from "@/component/GroupListings";
 import groupData from "@/data/groups.json";
 import Search from "@/component/Search";
 
 export default function Home() {
+  const getAllproduct = async () => {
+    try {
+      console.log("entered get all product");
+
+      const val = await getProducts();
+      console.log("getProducts returned:", val);
+      console.log(val);
+      setlistingData(val);
+      setFilteredDestinations(val);
+      setDestinations(Object.values(val));
+    } catch (E) {
+      console.log(E);
+    }
+  };
   const headerHight = useHeaderHeight();
   const [category, setCategory] = useState("All");
 
-  const onCatChanged = (category: string) => {
+  const onCatChanged = (category) => {
     console.log("Categpry: ", category);
     setCategory(category);
   };
+  useEffect(() => {
+    getAllproduct();
+  }, []);
 
   const [isFiltered, setIsFiltered] = useState(false);
-
-  const [filteredDestinations, setFilteredDestinations] = useState(listingData);
-
-  const [destinations, setDestinations] = useState(listingData);
+  const [listingData, setlistingData] = useState({});
+  const [filteredDestinations, setFilteredDestinations] = useState([]);
+  const [destinations, setDestinations] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
 
   const filterDestinations = () => {
-    if (searchQuery.length > 0) {
+    console.log("filtering destinations:", destinations);
+    if (searchQuery && searchQuery.length > 0) {
       setFilteredDestinations(
         destinations
-          .filter((item) =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase())
+          .filter(
+            (item) =>
+              typeof item.name === "string" &&
+              item.name.toLowerCase().includes(searchQuery.toLowerCase())
           )
           .sort((a, b) => {
             if (a.name > b.name) {
@@ -54,6 +73,10 @@ export default function Home() {
       );
     } else setFilteredDestinations(destinations);
   };
+
+  // useEffect(() => {
+  //   filterDestinations();
+  // }, [searchQuery]);
 
   useEffect(() => {
     if (!isFiltered) {
@@ -124,9 +147,6 @@ export default function Home() {
 
         <ScrollView>
           <Listings listings={filteredDestinations} category={category} />
-
-          {/* rendering the original data without applying the filtered earch on them */}
-          {/* <Listings listings={listingData} category={category} /> */}
 
           <GroupListings listings={groupData} />
         </ScrollView>

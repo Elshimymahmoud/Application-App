@@ -10,9 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { ListingType } from "@/types/listingType";
 import Colors from "@/constant/color";
-import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import { GroupType } from "@/types/groupType";
 
 type Props = {
   listings: any[];
@@ -37,23 +36,6 @@ const Listings = ({ listings, category }: Props) => {
         <TouchableOpacity>
           <View style={styles.item}>
             <Image source={{ uri: item.image }} style={styles.image} />
-            {/*   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrating */}
-
-            {/* <View style={styles.ratingRow}>
-            <View style={styles.rating}>
-                {[1,2,3,4,5].map((index)=>(
-                    <Ionicons
-                    key={index}
-                name="star"
-                size={20}
-                color='gold'
-              /> 
-
-                ))}
-                <Text style={styles.ratingText}>(4.9)</Text>
-             
-            </View>
-</View> */}
 
             <Text style={styles.itemTxt} numberOfLines={1} ellipsizeMode="tail">
               {item.name}

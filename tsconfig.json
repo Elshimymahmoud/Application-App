@@ -13,6 +13,8 @@
     "expo-env.d.ts",
     "component/Search.tsx",
     "component/GroupListings.jsx",
-    "component/GroupListings.jsx"
+    "component/GroupListings.jsx",
+    "app/(tabs)/Home.jsx",
+    "app/listing/[id].jsx"
   ]
 }

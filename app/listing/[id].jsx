@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
-import { ListingType } from "@/types/listingType";
 import listingData from "@/data/destinations.json";
 import {
   Feather,
@@ -32,14 +31,15 @@ const IMG_HEIGHT = 300;
 const ListingDetails = () => {
   const { id } = useLocalSearchParams();
 
-  const listing = (listingData as ListingType[]).find((item) => item.id === id);
+  const listing = listingData.find((item) => item.id === id);
 
   if (!listing) {
     throw new Error("Listing not found");
   }
 
   const router = useRouter();
-  const scrollRef = useAnimatedRef<Animated.ScrollView>();
+
+  const scrollRef = useAnimatedRef();
   const scrollOffset = useScrollViewOffset(scrollRef);
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -61,7 +61,6 @@ const ListingDetails = () => {
       ],
     };
   });
-
   return (
     <>
       <Stack.Screen
