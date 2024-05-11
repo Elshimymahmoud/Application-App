@@ -1,13 +1,26 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { signUp } from "../../Firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
 const SignUpScreen = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isHoveringPressable, setIsHoveringPressable] = useState(false);
 
+  const handleSignUp = async () => {
+    if (validateConfirmPassword()) {
+      try {
+        await signUp(email, password);
+        navigation.navigate("NextScreen");
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+    }
+  };
   const validateConfirmPassword = () => {
     return password === confirmPassword;
   };

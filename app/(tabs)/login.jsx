@@ -1,13 +1,12 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { signIn } from "../../Firebase/auth";
-import { useNavigate } from "react-router-native";
+import { Link } from "expo-router";
 
 const SignInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [count, setCount] = useState(0);
-  const navigate = useNavigate();
 
   return (
     <View style={styles.container}>
@@ -27,22 +26,27 @@ const SignInScreen = () => {
         secureTextEntry={true}
       />
       <View style={{ alignItems: "center" }}>
-        <Pressable
-          style={styles.btn}
-          onPress={async () => {
-            await signIn(email, password);
-          }}
-        >
-          <Text>Sign in</Text>
-        </Pressable>
-        <Pressable
-          style={styles.btn}
-          onPress={() => {
-            navigate("/signUp");
-          }}
-        >
-          <Text>Sign up</Text>
-        </Pressable>
+        <Link href="/signIn" asChild>
+          <Pressable
+            style={styles.btn}
+            onPress={async () => {
+              await signIn(email, password);
+            }}
+          >
+            <Text>Sign in</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/signUp" asChild>
+          <Pressable
+            style={styles.btn}
+            onPress={() => {
+              navigate("/signUp");
+            }}
+          >
+            <Text>Sign up</Text>
+          </Pressable>
+        </Link>
       </View>
     </View>
   );
