@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-travel-app",
-    "slug": "expo-travel-app",
+    "name": "My-App-Project",
+    "slug": "My-App-Project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

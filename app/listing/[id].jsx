@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
-import { ListingType } from "@/types/listingType";
 import listingData from "@/data/destinations.json";
 import {
   Feather,
@@ -17,7 +16,7 @@ import {
   FontAwesome5,
   Ionicons,
 } from "@expo/vector-icons";
-import Colors from "@/constants/Colors";
+import Colors from "@/constant/color";
 import Animated, {
   SlideInDown,
   interpolate,
@@ -28,16 +27,20 @@ import Animated, {
 
 const { width } = Dimensions.get("window");
 const IMG_HEIGHT = 300;
+  const router = useRouter();
 
 const ListingDetails = () => {
   const { id } = useLocalSearchParams();
-  const listing: ListingType = (listingData as ListingType[]).find(
-    (item) => item.id === id
-  );
+
+  const listing = listingData.find((item) => item.id === id);
+
+  if (!listing) {
+    throw new Error("Listing not found");
+  }
 
   const router = useRouter();
 
-  const scrollRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollRef = useAnimatedRef();
   const scrollOffset = useScrollViewOffset(scrollRef);
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -59,7 +62,6 @@ const ListingDetails = () => {
       ],
     };
   });
-
   return (
     <>
       <Stack.Screen
@@ -159,9 +161,7 @@ const ListingDetails = () => {
                 </View>
                 <View>
                   <Text style={styles.highlightTxt}>Rating</Text>
-                  <Text style={styles.highlightTxtVal}>
-                    {listing.rating} 
-                  </Text>
+                  <Text style={styles.highlightTxtVal}>{listing.rating}</Text>
                 </View>
               </View>
             </View>
@@ -176,7 +176,7 @@ const ListingDetails = () => {
           onPress={() => {}}
           style={[styles.footerBtn, styles.footerBookBtn]}
         >
-          <Text style={styles.footerBtnTxt}>Book Now</Text>
+          <Text style={styles.footerBtnTxt}>Buy Now</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}} style={styles.footerBtn}>
           <Text style={styles.footerBtnTxt}>${listing.price}</Text>
@@ -249,9 +249,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     position: "absolute",
     bottom: 0,
+    alignItems: "center",
+    justifyContent: "center",
     padding: 20,
     paddingBottom: 30,
-    width: width,
+
+    margin: "auto",
+    width: 400,
   },
   footerBtn: {
     flex: 1,
@@ -270,5 +274,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     textTransform: "uppercase",
+    width: 100,
   },
 });

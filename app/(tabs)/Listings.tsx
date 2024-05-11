@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ListingType } from "@/types/listingType";
-import Colors from "@/constants/Colors";
-import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import Colors from "@/constant/color";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { Link } from "expo-router";
 
 type Props = {
@@ -22,11 +22,11 @@ const Listings = ({ listings, category }: Props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log('Update Listing');
+    console.log("Update Listing");
     setLoading(true);
 
     setTimeout(() => {
-      setLoading(false)
+      setLoading(false);
     }, 200);
   }, [category]);
 
@@ -36,13 +36,7 @@ const Listings = ({ listings, category }: Props) => {
         <TouchableOpacity>
           <View style={styles.item}>
             <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.bookmark}>
-              <Ionicons
-                name="bookmark-outline"
-                size={20}
-                color={Colors.white}
-              />
-            </View>
+
             <Text style={styles.itemTxt} numberOfLines={1} ellipsizeMode="tail">
               {item.name}
             </Text>
@@ -93,16 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 30,
   },
-  bookmark: {
-    position: "absolute",
-    top: 185,
-    right: 30,
-    backgroundColor: Colors.primaryColor,
-    padding: 10,
-    borderRadius: 30,
-    borderWidth: 2,
-    borderColor: Colors.white,
-  },
+
   itemTxt: {
     fontSize: 16,
     fontWeight: "600",
@@ -117,5 +102,27 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "600",
     color: Colors.primaryColor,
+  },
+  ratingRow: {
+    position: "absolute",
+    top: 250,
+    right: 30,
+    backgroundColor: "white",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 6,
+    borderRadius: 30,
+    borderWidth: 2,
+    borderColor: Colors.white,
+  },
+  rating: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  ratingText: {
+    color: "gray",
+    fontFamily: "medium",
   },
 });
