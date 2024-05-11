@@ -2,8 +2,9 @@
 import type { ReactNode } from 'react';
 import type { TextProps, GestureResponderEvent } from 'react-native';
 
-export namespace ExpoRouter {
-  type StaticRoutes = `/` | `/(tabs)` | `/(tabs)\` | `/..\components\Listings` | `/_sitemap` | `/bookmarks` | `/category` | `/listing\[id]` | `/login` | `/profile` | `/search`;
+  // prettier-ignore
+  type StaticRoutes = `/` | `/(tabs)/bookmarks` | `/bookmarks` | `/(tabs)/category` | `/category` | `/(tabs)/Home` | `/Home` | `/(tabs)/Listings` | `/Listings` | `/(tabs)/login` | `/login` | `/(tabs)/profile` | `/profile` | `/(tabs)/SignUp` | `/SignUp`;
+  // prettier-ignore
   type DynamicRoutes<T extends string> = `/listing/${SingleRoutePart<T>}`;
   type DynamicRouteTemplate = `/listing/[id]`;
 
