@@ -147,8 +147,6 @@ export default function Home() {
 
         <ScrollView>
           <Listings listings={filteredDestinations} category={category} />
-
-          <GroupListings listings={groupData} />
         </ScrollView>
       </View>
     </>
