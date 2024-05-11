@@ -1,10 +1,10 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { signUp } from "../../Firebase/auth";
-import { useNavigation } from "@react-navigation/native";
-
+import ProfileComponent from "./profile";
+import {useRouter} from "expo-router"
 const SignUpScreen = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,7 +14,8 @@ const SignUpScreen = () => {
     if (validateConfirmPassword()) {
       try {
         await signUp(email, password);
-        navigation.navigate("NextScreen");
+        router.push("/(tabs)/Home");
+         router.push('/(tabs)/profile');
       } catch (error) {
         console.error(error);
       }
@@ -73,6 +74,7 @@ const SignUpScreen = () => {
           <Text>Sign up</Text>
         </Pressable>
       </View>
+      <ProfileComponent email={email} />
     </View>
   );
 };

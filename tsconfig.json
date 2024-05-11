@@ -18,5 +18,5 @@
     "app/listing/[id].jsx",
     "app/(tabs)/SignUp.jsx",
     "app/(tabs)/login.jsx"
-  ]
+, "app/(tabs)/profile.jsx"  ]
 }

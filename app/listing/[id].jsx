@@ -27,6 +27,7 @@ import Animated, {
 
 const { width } = Dimensions.get("window");
 const IMG_HEIGHT = 300;
+  const router = useRouter();
 
 const ListingDetails = () => {
   const { id } = useLocalSearchParams();

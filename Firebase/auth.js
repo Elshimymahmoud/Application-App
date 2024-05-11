@@ -8,7 +8,9 @@ import { app, db } from "./config";
 import { doc, setDoc } from "firebase/firestore";
 
 export const auth = getAuth(app);
-
+async function login(email, password) {
+  await signInWithEmailAndPassword(auth, email, password);
+}
 export const signUp = async (email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -53,3 +55,4 @@ export const signOutAsync = async () => {
     console.log(err);
   }
 };
+export {login}; 

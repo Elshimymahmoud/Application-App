@@ -2,11 +2,23 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { signIn } from "../../Firebase/auth";
 import { Link } from "expo-router";
-
+import { useRouter } from "expo-router";
+import {login} from "../../Firebase/auth"
 const SignInScreen = () => {
+    const router = useRouter();
+const handelLogin=async()=>{
+try{
+  await login(email,password);
+  router.push('/(tabs)/Home')
+}
+catch(error){
+  console.log(error)
+}
+
+}
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState();
 
   return (
     <View style={styles.container}>
@@ -26,27 +38,18 @@ const SignInScreen = () => {
         secureTextEntry={true}
       />
       <View style={{ alignItems: "center" }}>
-        <Link href="/signIn" asChild>
-          <Pressable
-            style={styles.btn}
-            onPress={async () => {
-              await signIn(email, password);
-            }}
-          >
-            <Text>Sign in</Text>
-          </Pressable>
-        </Link>
+        <Pressable style={styles.button} onPress={handelLogin}>
+          <Text style={styles.buttonText}>Log In</Text>
+        </Pressable>
 
-        <Link href="/signUp" asChild>
-          <Pressable
-            style={styles.btn}
-            onPress={() => {
-              navigate("/signUp");
-            }}
-          >
-            <Text>Sign up</Text>
-          </Pressable>
-        </Link>
+        <Pressable
+          style={styles.btn}
+          onPress={() => {
+            router.push("/(tabs)/SignUp");
+          }}
+        >
+          <Text>Sign up</Text>
+        </Pressable>
       </View>
     </View>
   );

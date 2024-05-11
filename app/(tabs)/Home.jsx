@@ -132,7 +132,7 @@ export default function Home() {
         }}
       />
       <View style={[styles.container, { paddingTop: headerHight }]}>
-        <Text style={styles.headingText}>E-Commerce App</Text>
+        <Text style={styles.headingText}>Travel App</Text>
 
         <Search
           value={searchQuery}
