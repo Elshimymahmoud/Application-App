@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+
 import { Tabs } from "expo-router";
 import color from "../../constant/color";
 
@@ -15,26 +15,20 @@ export default function _layout() {
           padding: 0,
         },
         tabBarShowLabel: false,
-        tabBarActiveTintColor: color.black,
+        tabBarActiveTintColor: color.white,
         tabBarInactiveTintColor: "#999",
       }}
     >
       <Tabs.Screen
-        name="Home"
+        name="index"
         options={{
+          title: "Home",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="home" size={24} color="#ff7f36" />
+            <Ionicons name="home" size={24} color="black" />
           ),
         }}
       />
-      <Tabs.Screen
-        name="cart"
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="cart" size={24} color="black" />
-          ),
-        }}
-      />
+
       <Tabs.Screen
         name="profile"
         options={{

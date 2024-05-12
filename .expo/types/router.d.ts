@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import type { TextProps, GestureResponderEvent } from 'react-native';
 
   // prettier-ignore
-  type StaticRoutes = `/` | `/(tabs)/bookmarks` | `/bookmarks` | `/(tabs)/category` | `/category` | `/(tabs)/Home` | `/Home` | `/(tabs)/Listings` | `/Listings` | `/(tabs)/login` | `/login` | `/(tabs)/profile` | `/profile` | `/(tabs)/SignUp` | `/SignUp`;
+  type StaticRoutes = `/` | `/(tabs)/` | `/(tabs)` | `/(tabs)/Listings` | `/Listings` | `/(tabs)/login` | `/login` | `/(tabs)/profile` | `/profile` | `/(tabs)/SignUp` | `/SignUp` | `/bookmarks` | `/category`;
   // prettier-ignore
   type DynamicRoutes<T extends string> = `/listing/${SingleRoutePart<T>}`;
   type DynamicRouteTemplate = `/listing/[id]`;

@@ -15,8 +15,6 @@ import { useHeaderHeight } from "@react-navigation/elements";
 import CatogreyBtn from "@/component/CatogreyBtn";
 import Listings from "./Listings";
 import { getProducts } from "@/Firebase/addTofirebase";
-import GroupListings from "@/component/GroupListings";
-import groupData from "@/data/groups.json";
 import Search from "@/component/Search";
 
 export default function Home() {
@@ -74,10 +72,6 @@ export default function Home() {
     } else setFilteredDestinations(destinations);
   };
 
-  // useEffect(() => {
-  //   filterDestinations();
-  // }, [searchQuery]);
-
   useEffect(() => {
     if (!isFiltered) {
       setFilteredDestinations(destinations);
@@ -90,7 +84,6 @@ export default function Home() {
 
   return (
     <>
-      {" "}
       <Stack.Screen
         options={{
           headerTransparent: true,
