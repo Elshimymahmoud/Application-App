@@ -13,9 +13,8 @@ const ProfileComponent = ({}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Image style={styles.image} source={ProfilePhoto} />
-      </TouchableOpacity>
+      <Image style={styles.image} source={ProfilePhoto} />
+
       <View style={styles.inContainer}>
         <Text style={styles.text}>Email: {email}</Text>
         <Text style={styles.text}>phone number: 011158455524</Text>
