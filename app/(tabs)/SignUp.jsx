@@ -1,4 +1,11 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 import { signUp } from "../../Firebase/auth";
 import ProfileComponent from "./profile";
@@ -53,7 +60,7 @@ const SignUpScreen = () => {
       />
 
       <View style={{ alignItems: "center" }}>
-        <Pressable
+        <TouchableOpacity
           style={{
             ...styles.btn,
             backgroundColor: isHoveringPressable ? "lime" : "cyan",
@@ -73,7 +80,7 @@ const SignUpScreen = () => {
           }}
         >
           <Text>Sign up</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
       <ProfileComponent email={email} />
     </View>
