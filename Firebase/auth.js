@@ -28,10 +28,6 @@ export const signUp = async (email, password) => {
   } catch (err) {
     console.log(err);
   }
-
-  // createUserWithEmailAndPassword(auth, email, password)
-  //     .then(userCredential => console.log(userCredential))
-  //     .catch(err => console.log(err))
 };
 
 export const signIn = async (email, password) => {
@@ -55,4 +51,4 @@ export const signOutAsync = async () => {
     console.log(err);
   }
 };
-export {login}; 
+export { login };

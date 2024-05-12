@@ -2,7 +2,8 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { signUp } from "../../Firebase/auth";
 import ProfileComponent from "./profile";
-import {useRouter} from "expo-router"
+import { useRouter } from "expo-router";
+
 const SignUpScreen = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -10,20 +11,19 @@ const SignUpScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isHoveringPressable, setIsHoveringPressable] = useState(false);
 
+  const validateConfirmPassword = () => {
+    return password === confirmPassword;
+  };
   const handleSignUp = async () => {
     if (validateConfirmPassword()) {
       try {
         await signUp(email, password);
         router.push("/(tabs)/Home");
-         router.push('/(tabs)/profile');
       } catch (error) {
         console.error(error);
       }
     } else {
     }
-  };
-  const validateConfirmPassword = () => {
-    return password === confirmPassword;
   };
 
   return (
@@ -51,6 +51,7 @@ const SignUpScreen = () => {
         onBlur={validateConfirmPassword}
         onFocus={() => console.log("focused")}
       />
+
       <View style={{ alignItems: "center" }}>
         <Pressable
           style={{
