@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-
 import ProfilePhoto from "../../assets/images/559530-200.png";
 import { router } from "expo-router";
+import { auth } from "@/Firebase/config";
 
-const ProfileComponent = ({ email }) => {
+const ProfileComponent = ({}) => {
+  const email = auth.currentUser?.email;
+
   const handleLinkPress = () => {
-    router.push("/Home");
+    router.push("/");
   };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -30,10 +33,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   inContainer: {
     alignItems: "center",
     padding: 55,
   },
+
   image: {
     width: 200,
     height: 200,
@@ -42,15 +47,18 @@ const styles = StyleSheet.create({
     position: "relative",
     top: 100,
   },
+
   tableBorder: {
     borderWidth: 1,
     borderColor: "#ccc",
   },
+
   tableText: {
     padding: 10,
     fontSize: 16,
     color: "#333",
   },
+
   text: {
     fontSize: 18,
     marginBottom: 30,

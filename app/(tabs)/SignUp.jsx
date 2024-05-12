@@ -25,7 +25,7 @@ const SignUpScreen = () => {
     if (validateConfirmPassword()) {
       try {
         await signUp(email, password);
-        router.replace("/Home");
+        router.replace("/");
       } catch (error) {
         console.error(error);
       }

@@ -1,21 +1,17 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
-import { signIn } from "../../Firebase/auth";
-import { Link } from "expo-router";
 import { useRouter } from "expo-router";
-import {login} from "../../Firebase/auth"
+import { login } from "../../Firebase/auth";
 const SignInScreen = () => {
-    const router = useRouter();
-const handelLogin=async()=>{
-try{
-  await login(email,password);
-  router.push('/(tabs)/Home')
-}
-catch(error){
-  console.log(error)
-}
-
-}
+  const router = useRouter();
+  const handelLogin = async () => {
+    try {
+      await login(email, password);
+      router.replace("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [count, setCount] = useState();
@@ -39,16 +35,7 @@ catch(error){
       />
       <View style={{ alignItems: "center" }}>
         <Pressable style={styles.button} onPress={handelLogin}>
-          <Text style={styles.buttonText}>Log In</Text>
-        </Pressable>
-
-        <Pressable
-          style={styles.btn}
-          onPress={() => {
-            router.push("/(tabs)/SignUp");
-          }}
-        >
-          <Text>Sign up</Text>
+          <Text style={styles.buttonText}>Sign In</Text>
         </Pressable>
       </View>
     </View>
@@ -69,6 +56,14 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   btn: {
+    padding: 8,
+    borderRadius: 16,
+    elevation: 5,
+    backgroundColor: "cyan",
+    marginVertical: 8,
+    alignItems: "center",
+  },
+  button: {
     padding: 8,
     borderRadius: 16,
     elevation: 5,
