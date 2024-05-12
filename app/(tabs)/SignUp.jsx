@@ -25,11 +25,13 @@ const SignUpScreen = () => {
     if (validateConfirmPassword()) {
       try {
         await signUp(email, password);
-        router.push("/(tabs)/Home");
+        router.replace("/Home");
       } catch (error) {
         console.error(error);
       }
     } else {
+      console.error(error);
+      console.log("invalid info");
     }
   };
 
@@ -65,11 +67,7 @@ const SignUpScreen = () => {
             ...styles.btn,
             backgroundColor: isHoveringPressable ? "lime" : "cyan",
           }}
-          onPress={async () => {
-            if (validateConfirmPassword()) {
-              await signUp(email, password);
-            }
-          }}
+          onPress={handleSignUp}
           onHoverIn={() => {
             setIsHoveringPressable(true);
             console.log("inside pressable");

@@ -1,18 +1,12 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Linking,
-} from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import ProfilePhoto from "../../assets/images/559530-200.png";
+import { router } from "expo-router";
 
-const ProfileComponent = ({ email, imageUri, linkUrl }) => {
+const ProfileComponent = ({ email }) => {
   const handleLinkPress = () => {
-    Linking.openURL("http://localhost:8082/Home");
+    router.push("/Home");
   };
   return (
     <View style={styles.container}>
