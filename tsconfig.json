@@ -14,9 +14,10 @@
     "component/Search.tsx",
     "component/GroupListings.jsx",
     "component/GroupListings.jsx",
-    "app/(tabs)/Home.jsx",
+    "app/(tabs)/index.jsx",
     "app/listing/[id].jsx",
     "app/(tabs)/SignUp.jsx",
-    "app/(tabs)/login.jsx"
-, "app/(tabs)/profile.jsx"  ]
+    "app/(tabs)/login.jsx",
+    "app/(tabs)/profile.jsx"
+  ]
 }
