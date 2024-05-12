@@ -14,11 +14,9 @@ const SignInScreen = () => {
   };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [count, setCount] = useState();
 
   return (
     <View style={styles.container}>
-      <Text>{count}</Text>
       <TextInput
         placeholder="Enter your email"
         style={styles.textInput}

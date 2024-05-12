@@ -21,6 +21,7 @@ const SignUpScreen = () => {
   const validateConfirmPassword = () => {
     return password === confirmPassword;
   };
+
   const handleSignUp = async () => {
     if (validateConfirmPassword()) {
       try {
